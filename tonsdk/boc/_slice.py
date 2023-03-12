@@ -1,5 +1,5 @@
 import bitarray
-from ._cell import Cell
+from ._cell import Cell, BitString
 from ..utils._address import Address
 
 
@@ -136,3 +136,12 @@ class Slice:
 
     def skip_dict(self):
         self.load_dict()
+
+    def to_cell(self) -> Cell:
+        """Converts slice to cell."""
+        bit_string = BitString(1023)
+        bit_string.array = bytearray(self.bits.tobytes())
+        cell = Cell()
+        cell.bits = bit_string
+        cell.refs = self.refs
+        return cell
