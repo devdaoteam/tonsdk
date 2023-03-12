@@ -6,13 +6,13 @@ import sys
 
 
 def main():
-    if len(sys.argv) < 3:
-        print('Usage: python simple_transfer.py <address> <amount> "<comment>"')
+    if len(sys.argv) < 4:
+        print('Usage: python simple_transfer.py <addr> <amount> "<comment>"')
         return
 
     addr_str = sys.argv[1]
-    comment = sys.argv[2]
-    amount = to_nano(float(sys.argv[3]), "ton")
+    amount = to_nano(float(sys.argv[2]), "ton")
+    comment = sys.argv[3]
 
     client = TonCenterTonClient()
 
